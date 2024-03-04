@@ -50,6 +50,15 @@ library Address {
     }
 
     /**
+     * @dev This method relies on extcodesize/address.code.length, which returns 0
+     * for contracts in construction, since the code is only stored at the end
+     * of the constructor execution.
+     */
+    function isContract(address account) internal view returns (bool) {
+        return account.code.length > 0;
+    }
+
+    /**
      * @dev Performs a Solidity function call using a low level `call`. A
      * plain `call` is an unsafe replacement for a function call: use this
      * function instead.
